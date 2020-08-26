@@ -1,15 +1,19 @@
 import React from "react";
 import ReactDOM from "react-dom";
-// import "./index.css";
+import "./index.css";
 
-const MyApp = () => {
+const MyInfo = () => {
   return (
-    <ul>
-      <li>Fuck</li>
-      <li>you</li>
-      <li>Fuck you</li>
-    </ul>
+    <div>
+      <h1>Esteban Rojas</h1>
+      <p>I am fc*ing awesome</p>
+      <ul>
+        <li>Canada</li>
+        <li>Iceland again</li>
+        <li>India</li>
+      </ul>
+    </div>
   );
 };
 
-ReactDOM.render(<MyApp />, document.getElementById("root"));
+ReactDOM.render(<MyInfo />, document.getElementById("root"));
