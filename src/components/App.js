@@ -1,17 +1,18 @@
 import React from "react";
-import Joke from "./Joke";
+
+import Product from "./Product";
+import productsData from "../vschoolProducts";
 
 const App = () => {
-  return (
-    <div>
-      <Joke question="Wtf?" punchLine="Bitch please" />
-      <Joke
-        question="How much money does a pirate pay for corn? "
-        punchLine="A buccaneer"
-      />
-      <Joke punchLine="I'm a big fan of whiteboards. I find them quite re-markable." />
-    </div>
-  );
+  const products = productsData.map((product) => (
+    <Product
+      key={product.id}
+      name={product.name}
+      price={product.price}
+      description={product.description}
+    />
+  ));
+  return <div>{products}</div>;
 };
 
 export default App;
