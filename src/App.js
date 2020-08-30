@@ -1,22 +1,34 @@
 import React, { Component } from "react";
-import Info from "./components/Info";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLoading: true,
+      isLogged: true,
     };
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  componentDidMount() {
-    setTimeout(() => {
-      this.setState({ isLoading: false });
-    }, 2000);
+  handleClick() {
+    this.setState((prevState) => {
+      return {
+        isLogged: !prevState.isLogged,
+      };
+    });
   }
 
   render() {
-    return <div>{this.state.isLoading ? <h2>Loading...</h2> : <Info />}</div>;
+    return this.state.isLogged ? (
+      <div>
+        <h2>Logged in</h2>
+        <button onClick={this.handleClick}>Log out</button>
+      </div>
+    ) : (
+      <div>
+        <h2>Logged out</h2>
+        <button onClick={this.handleClick}>Log in</button>
+      </div>
+    );
   }
 }
 
