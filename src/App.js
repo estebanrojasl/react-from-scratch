@@ -1,39 +1,22 @@
 import React, { Component } from "react";
+import Info from "./components/Info";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      count: 1,
+      isLoading: true,
     };
-    this.handleClickDouble = this.handleClickDouble.bind(this);
-    this.handleClickHalve = this.handleClickHalve.bind(this);
   }
 
-  handleClickDouble() {
-    this.setState((prevState) => {
-      return {
-        count: prevState.count * 2,
-      };
-    });
-  }
-
-  handleClickHalve() {
-    this.setState((prevState) => {
-      return {
-        count: prevState.count / 2,
-      };
-    });
+  componentDidMount() {
+    setTimeout(() => {
+      this.setState({ isLoading: false });
+    }, 2000);
   }
 
   render() {
-    return (
-      <div>
-        <h1>{this.state.count}</h1>
-        <button onClick={this.handleClickDouble}>Double</button>
-        <button onClick={this.handleClickHalve}>Halve</button>
-      </div>
-    );
+    return <div>{this.state.isLoading ? <h2>Loading...</h2> : <Info />}</div>;
   }
 }
 
