@@ -1,19 +1,22 @@
-import React, { Component } from "react";
+import React from "react";
 
-class App extends Component {
-  constructor() {
-    super();
-    this.state = {
-      isLoggedIn: false,
-    };
-  }
-  render() {
-    return (
-      <div>
-        <h1>You are currently logged {this.state.isLoggedIn ? "in" : "out"}</h1>
-      </div>
-    );
-  }
+function handleClick() {
+  console.log("I was clicked");
+}
+
+function App() {
+  return (
+    <div>
+      <img
+        onMouseOver={() => console.log("Hovered over")}
+        src="https://www.fillmurray.com/200/100"
+        alt=""
+      />
+      <br />
+      <br />
+      <button onMouseOver={handleClick}>Click me</button>
+    </div>
+  );
 }
 
 export default App;
