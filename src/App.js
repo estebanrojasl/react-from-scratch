@@ -1,22 +1,40 @@
-import React from "react";
+import React, { Component } from "react";
 
-function handleClick() {
-  console.log("I was clicked");
-}
+class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      count: 1,
+    };
+    this.handleClickDouble = this.handleClickDouble.bind(this);
+    this.handleClickHalve = this.handleClickHalve.bind(this);
+  }
 
-function App() {
-  return (
-    <div>
-      <img
-        onMouseOver={() => console.log("Hovered over")}
-        src="https://www.fillmurray.com/200/100"
-        alt=""
-      />
-      <br />
-      <br />
-      <button onMouseOver={handleClick}>Click me</button>
-    </div>
-  );
+  handleClickDouble() {
+    this.setState((prevState) => {
+      return {
+        count: prevState.count * 2,
+      };
+    });
+  }
+
+  handleClickHalve() {
+    this.setState((prevState) => {
+      return {
+        count: prevState.count / 2,
+      };
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>{this.state.count}</h1>
+        <button onClick={this.handleClickDouble}>Double</button>
+        <button onClick={this.handleClickHalve}>Halve</button>
+      </div>
+    );
+  }
 }
 
 export default App;
