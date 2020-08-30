@@ -5,12 +5,7 @@ import productsData from "../vschoolProducts";
 
 const App = () => {
   const products = productsData.map((product) => (
-    <Product
-      key={product.id}
-      name={product.name}
-      price={product.price}
-      description={product.description}
-    />
+    <Product key={product.id} product={product} />
   ));
   return <div>{products}</div>;
 };

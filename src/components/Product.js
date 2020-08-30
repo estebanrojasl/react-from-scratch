@@ -1,17 +1,11 @@
 import React from "react";
+import ProductInfo from "./ProductInfo";
 
 const Product = (props) => {
-  console.log("props:", props);
   return (
     <div>
-      <h1>{props.name}</h1>
-      <p>
-        {props.price.toLocaleString("en-US", {
-          style: "currency",
-          currency: "USD",
-        })}
-        -{props.description}
-      </p>
+      <h1>{props.product.name}</h1>
+      <ProductInfo product={props.product} />
     </div>
   );
 };
