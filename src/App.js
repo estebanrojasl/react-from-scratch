@@ -7,15 +7,17 @@ class App extends Component {
       data: {},
       isLoading: false,
     };
+    this.fetchComponent = this.fetchComponent.bind(this);
+  }
+
+  async fetchComponent() {
+    this.setState({ isLoading: true });
+    const data = await fetch("https://swapi.dev/api/vehicles/4");
+    this.setState({ data: await data.json(), isLoading: false });
   }
 
   componentDidMount() {
-    const fetchComponent = async () => {
-      this.setState({ isLoading: true });
-      const data = await fetch("https://swapi.dev/api/vehicles/4");
-      this.setState({ data: await data.json(), isLoading: false });
-    };
-    fetchComponent();
+    this.fetchComponent();
   }
 
   // componentDidMount() {
