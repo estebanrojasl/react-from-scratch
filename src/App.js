@@ -4,32 +4,29 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      isLogged: true,
+      data: {},
+      isLoading: false,
     };
-    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick() {
-    this.setState((prevState) => {
-      return {
-        isLogged: !prevState.isLogged,
-      };
-    });
+  componentDidMount() {
+    const fetchComponent = async () => {
+      this.setState({ isLoading: true });
+      const data = await fetch("https://swapi.dev/api/vehicles/4");
+      this.setState({ data: await data.json(), isLoading: false });
+    };
+    fetchComponent();
   }
+
+  // componentDidMount() {
+  //   this.setState({ isLoading: true });
+  //   fetch("https://swapi.dev/api/people/1")
+  //     .then((response) => response.json())
+  //     .then((data) => this.setState({ data: data, isLoading: false }));
+  // }
 
   render() {
-    return this.state.isLogged ? (
-      <div>
-        <h2>Logged in</h2>
-        <button onClick={this.handleClick}>Log out</button>
-      </div>
-    ) : (
-      <div>
-        <h2>Logged out</h2>
-        <button onClick={this.handleClick}>Log in</button>
-      </div>
-    );
+    return <p>{this.state.isLoading ? "Loading" : this.state.data.name}</p>;
   }
 }
-
 export default App;
